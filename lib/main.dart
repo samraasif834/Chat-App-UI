@@ -16,13 +16,13 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  Future<Widget> SignedIn() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      return Chatroom1();
-    } else
-      return Auth1();
-  }
+  // Future<Widget> SignedIn() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   // if (user != null) {
+  //   //   return Chatroom1();
+  //   // } else
+  //   //   return Auth1();
+  // }
 
   const MyApp({Key? key}) : super(key: key);
 

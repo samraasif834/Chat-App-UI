@@ -14,40 +14,42 @@ class Auth1 extends StatefulWidget {
 
 class _Auth1State extends State<Auth1> {
 
-  GoogleSignIn googleSignIn = GoogleSignIn();
+  // GoogleSignIn googleSignIn = GoogleSignIn();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-   Future signInFunction()async{
+  
+
+  //  Future signInFunction()async{
      
-    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    if(googleUser == null){
-      return;
-    }
-    final googleAuth = await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken
-    );
-    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+  //   GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+  //   if(googleUser == null){
+  //     return;
+  //   }
+  //   final googleAuth = await googleUser.authentication;
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth.accessToken,
+  //     idToken: googleAuth.idToken
+  //   );
+  //   UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
 
-    DocumentSnapshot userExist = await firestore.collection('users').doc(userCredential.user!.uid).get();
+  //   DocumentSnapshot userExist = await firestore.collection('users').doc(userCredential.user!.uid).get();
 
-    if(userExist.exists){
-      print("User Already Exists in Database");
-    }else{
-       await firestore.collection('users').doc(userCredential.user!.uid).set({
-      'email':userCredential.user!.email,
-      'name':userCredential.user!.displayName,
-      'image':userCredential.user!.photoURL,
-      'uid':userCredential.user!.uid,
-      'date':DateTime.now(),
-    });
-    }
+  //   if(userExist.exists){
+  //     print("User Already Exists in Database");
+  //   }else{
+  //      await firestore.collection('users').doc(userCredential.user!.uid).set({
+  //     'email':userCredential.user!.email,
+  //     'name':userCredential.user!.displayName,
+  //     'image':userCredential.user!.photoURL,
+  //     'uid':userCredential.user!.uid,
+  //     'date':DateTime.now(),
+  //   });
+  //   }
 
-  //  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp()), (route) => false);
+  // //  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp()), (route) => false);
    
 
-  }
+  // }
 
   @override
   Widget build(BuildContext context) {

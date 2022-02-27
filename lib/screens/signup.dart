@@ -1,4 +1,5 @@
 import 'package:chatapp1/screens/chatroom.dart';
+import 'package:chatapp1/screens/chatroom1.dart';
 import 'package:chatapp1/screens/login.dart';
 import 'package:chatapp1/screens/variable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ class _SignupState extends State<Signup> {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: email.text, password: pass.text);
+      // addsignup();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -28,8 +30,8 @@ class _SignupState extends State<Signup> {
       print(e);
     }
 
-    // Navigator.of(context)
-    //     .push(MaterialPageRoute(builder: (context) => Chatroom()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => Chatroom1()));
   }
 
   addsignup() async {
@@ -273,8 +275,9 @@ class _SignupState extends State<Signup> {
               child: Container(
                   child: ElevatedButton(
                 onPressed: () async {
+                   addsignup();
                   registration();
-                  addsignup();
+                 
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(20, 39, 69, 1.0)),

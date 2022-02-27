@@ -19,9 +19,9 @@ class _ChatroomState extends State<Chatroom> {
           
           builder: (BuildContext context,
         AsyncSnapshot<QuerySnapshot> snapshot) {
-           if (snapshot.hasError) {
-                  return Text("ERROR");
-                }
+          //  if (snapshot.hasError) {
+          //         return Text("ERROR");
+          //       }
            if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
                     child: CircularProgressIndicator(),

@@ -1,4 +1,5 @@
 import 'package:chatapp1/screens/chatroom.dart';
+import 'package:chatapp1/screens/chatroom1.dart';
 import 'package:chatapp1/screens/signup.dart';
 import 'package:chatapp1/screens/variable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,41 +18,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   // FirebaseAuth auth = FirebaseAuth.instance;
 
-
-   GoogleSignIn googleSignIn = GoogleSignIn();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-   Future signInFunction()async{
-     
-    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    if(googleUser == null){
-      return;
-    }
-    final googleAuth = await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken
-    );
-    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-
-    DocumentSnapshot userExist = await firestore.collection('users').doc(userCredential.user!.uid).get();
-
-    if(userExist.exists){
-      print("User Already Exists in Database");
-    }else{
-       await firestore.collection('users').doc(userCredential.user!.uid).set({
-      'email':userCredential.user!.email,
-      'name':userCredential.user!.displayName,
-      'image':userCredential.user!.photoURL,
-      'uid':userCredential.user!.uid,
-      'date':DateTime.now(),
-    });
-    }
-
-  //  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp()), (route) => false);
-   
-
-  }
 
   Future signin() async {
     try {
@@ -64,7 +31,7 @@ class _LoginState extends State<Login> {
         print('Wrong password provided for that user.');
       }
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Chatroom()));
+          .push(MaterialPageRoute(builder: (context) => Chatroom1()));
       email.clear();
       pass.clear();
     }
@@ -309,7 +276,7 @@ class _LoginState extends State<Login> {
               child: Container(
                   child: ElevatedButton(
                 onPressed: () {
-                 signInFunction();
+                  signin();
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Color.fromRGBO(194, 103, 117, 1.0),

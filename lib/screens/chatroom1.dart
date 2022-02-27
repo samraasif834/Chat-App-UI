@@ -39,28 +39,34 @@ class _Chatroom1State extends State<Chatroom1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('users').snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Text("ERROR");
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+      body: 
+      
+      // StreamBuilder<QuerySnapshot>(
+      //     stream: FirebaseFirestore.instance.collection('users').snapshots(),
+      //     builder:
+      //         (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      //       if (snapshot.hasError) {
+      //         return Text("ERROR");
+      //       }
+      //       if (snapshot.connectionState == ConnectionState.waiting) {
+      //         return Center(
+      //           child: CircularProgressIndicator(),
+      //         );
+      //       }
 
-            return ListView(
-              children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                Map<String, dynamic> data =
-                    document.data()! as Map<String, dynamic>;
+      //       return 
+            
+            // ListView(
+            //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            //     Map<String, dynamic> data =
+            //         document.data()! as Map<String, dynamic>;
 
-                print(data['Email']);
+            //     print(data['Email']);
 
-                // print(data);
-                return Stack(
+            //     // print(data);
+            //     return 
+                
+                Stack(
                   children: [
                     new AppBar(
                         brightness: Brightness.dark,
@@ -116,37 +122,37 @@ class _Chatroom1State extends State<Chatroom1> {
                                     color: Colors.white,
                                   ))),
 
-                          Positioned(
-                            top: 100,
-                            child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      filled: true,
-                                      hintStyle:
-                                          TextStyle(color: Colors.grey[800]),
-                                      hintText: "Search",
-                                      fillColor: Colors.white70),
-                                )),
-                          ),
-                          Positioned(
-                            top: 200,
-                            height: 800,
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(28),
-                                    topRight: Radius.circular(28)),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   top: 100,
+                          //   child: Container(
+                          //       width: MediaQuery.of(context).size.width,
+                          //       height: MediaQuery.of(context).size.height,
+                          //       child: TextField(
+                          //         decoration: InputDecoration(
+                          //             border: OutlineInputBorder(
+                          //               borderRadius:
+                          //                   BorderRadius.circular(10.0),
+                          //             ),
+                          //             filled: true,
+                          //             hintStyle:
+                          //                 TextStyle(color: Colors.grey[800]),
+                          //             hintText: "Search",
+                          //             fillColor: Colors.white70),
+                          //       )),
+                          // ),
+                          // Positioned(
+                          //   top:100,
+                          //   height: 700,
+                          //   child: Container(
+                          //     width: MediaQuery.of(context).size.width,
+                          //     decoration: BoxDecoration(
+                          //       color: Colors.purple,
+                          //       borderRadius: BorderRadius.only(
+                          //           topLeft: Radius.circular(28),
+                          //           topRight: Radius.circular(28)),
+                          //     ),
+                          //   ),
+                          // ),
                           // Positioned(
                           //   top: 170,
                           //   width: MediaQuery.of(context).size.width,
@@ -182,15 +188,16 @@ class _Chatroom1State extends State<Chatroom1> {
                           // ),
                           Container(
                               child: Positioned(
-                            top: 200,
+                            top: 80,
                             left: -1,
                             height: MediaQuery.of(context).size.height,
                             width: MediaQuery.of(context).size.width,
                             child: ListView.builder(
-                                itemCount: snapshot.data!.docs.length,
+                                // itemCount: snapshot.data!.docs.length,
+                                 itemCount: 10,
                                 itemBuilder: (context, index) {
-                                  DocumentSnapshot ds =
-                                      snapshot.data!.docs[index];
+                                  // DocumentSnapshot ds =
+                                  //     snapshot.data!.docs[index];
                                   return Container(
                                       color: Colors.grey.shade100,
                                       child: ListTile(
@@ -198,8 +205,8 @@ class _Chatroom1State extends State<Chatroom1> {
                                             backgroundImage: AssetImage(
                                                 'assets/images/avator.png'),
                                           ),
-                                          title: Text(
-                                            ds['username'],
+                                          title: Text("samra",
+                                            // ds['username'],
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
@@ -242,10 +249,11 @@ class _Chatroom1State extends State<Chatroom1> {
                       ),
                     ),
                   ],
+                )
                 );
-              }).toList(),
-            );
-          }),
-    );
+    //           }).toList(),
+          
+    //       }),
+    // );
   }
 }
