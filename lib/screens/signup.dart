@@ -34,11 +34,14 @@ class _SignupState extends State<Signup> {
         .push(MaterialPageRoute(builder: (context) => Chatroom1()));
   }
 
+
+
   addsignup() async {
     await FirebaseFirestore.instance.collection('users').add({
       'Email': email.text,
       'username': username.text,
     });
+    print("hello samra");
     // taskController.clear();
     email.clear();
     username.clear();
@@ -275,9 +278,9 @@ class _SignupState extends State<Signup> {
               child: Container(
                   child: ElevatedButton(
                 onPressed: () async {
-                   addsignup();
-                  registration();
-                 
+                 registration();
+               addsignup();
+
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(20, 39, 69, 1.0)),
