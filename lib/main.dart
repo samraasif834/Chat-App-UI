@@ -4,6 +4,7 @@ import 'package:chatapp1/screens/call.dart';
 import 'package:chatapp1/screens/char.dart';
 import 'package:chatapp1/screens/chatroom.dart';
 import 'package:chatapp1/screens/chatroom1.dart';
+import 'package:chatapp1/screens/newchatscreen.dart';
 import 'package:chatapp1/screens/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Auth1(),
+      home: Newchatscreen(),
     );
   }
 }
